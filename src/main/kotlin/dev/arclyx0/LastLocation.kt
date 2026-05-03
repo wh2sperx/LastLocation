@@ -3,13 +3,6 @@ package dev.arclyx0
 import org.bukkit.plugin.java.JavaPlugin
 import org.mvplugins.multiverse.core.MultiverseCoreApi
 
-/**
- * LastLocation — Auto-save logout position & teleport back plugin.
- *
- * Saves the player's exact position when they disconnect from a whitelisted world,
- * and allows them to teleport back using /lastlocation from designated command worlds.
- * Uses Multiverse-Core for safe teleportation.
- */
 class LastLocation : JavaPlugin() {
 
     lateinit var playerDataManager: PlayerDataManager

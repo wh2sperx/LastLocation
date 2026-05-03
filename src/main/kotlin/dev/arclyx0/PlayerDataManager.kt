@@ -187,7 +187,7 @@ class PlayerDataManager(
         playerFlags.remove(uuid)
     }
 
-    // ── Legacy compat (kept for getPlayerBukkitLocation if needed) ───────
+    // Legacy Compat
 
     fun getPlayerBukkitLocation(uuid: UUID): Location? {
         val saved = getDisconnectLocation(uuid)
