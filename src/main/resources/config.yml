@@ -1,0 +1,23 @@
+# ============================================
+# LastLocation Configuration
+# ============================================
+
+# Worlds where the player's logout position will be saved.
+# Only when a player disconnects in one of these worlds,
+# their exact coordinates and look direction are recorded.
+save-worlds:
+  - world
+  - world_nether
+  - world_the_end
+
+# Worlds where the /lastlocation command can be used.
+# Players must be standing in one of these worlds to teleport back.
+# Typically set to lobby/hub worlds.
+command-worlds:
+  - lobby
+  - example
+
+# Default fallback world.
+# If a player has no saved location (new player) or the saved world
+# no longer exists, they will be teleported to this world's spawn point.
+default-world: qhuyy

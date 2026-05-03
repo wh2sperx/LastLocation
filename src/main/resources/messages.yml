@@ -1,0 +1,43 @@
+# LastLocation Messages Configuration
+# Style adapted from EssentialsX Config By Earns
+# Version: v1.0
+
+# ===================
+# PERMISSION & GENERAL ERRORS
+# ===================
+no-permission-reload: "<red>✖</red> <dark_gray>▪</dark_gray> <red>ʙạɴ ᴋʜôɴɢ ᴄó qᴜʏềɴ ᴛảɪ ʟạɪ ᴄấᴜ ʜìɴʜ.</red>"
+reload-success: "<color:#99ff94>✔</color> <dark_gray>▪</dark_gray> <white>Đã ᴛảɪ ʟạɪ ᴄấᴜ ʜìɴʜ ᴛʜàɴʜ ᴄôɴɢ.</white>"
+no-permission-teleport-others: "<gradient:#ff7817:#ffc46b>⚐</gradient> <dark_gray>▪</dark_gray> <white>ʙạɴ ᴋʜôɴɢ ᴄó qᴜʏềɴ ᴅịᴄʜ ᴄʜᴜʏểɴ ɴɢườɪ ᴄʜơɪ ᴋʜáᴄ.</white>"
+no-permission-teleport-self: "<gradient:#ff7817:#ffc46b>⚐</gradient> <dark_gray>▪</dark_gray> <white>ʙạɴ ᴋʜôɴɢ ᴄó qᴜʏềɴ sử ᴅụɴɢ ʟệɴʜ ɴàʏ.</white>"
+console-must-specify-player: "<color:#ffdac4>⚙</color> <white>ʜệ ᴛʜốɴɢ</white> <dark_gray>▪</dark_gray> <white>ᴄᴏɴsᴏʟᴇ ᴘʜảɪ ᴄʜỉ địɴʜ ᴛêɴ ɴɢườɪ ᴄʜơɪ: /<label> <player></white>"
+
+# ===================
+# PLAYER & WORLD ERRORS
+# ===================
+player-not-online: "<color:#ffdac4>⚙</color> <white>ʜệ ᴛʜốɴɢ</white> <dark_gray>▪</dark_gray> <white>ɴɢườɪ ᴄʜơɪ '<player>' ᴋʜôɴɢ ᴛʀựᴄ ᴛᴜʏếɴ.</white>"
+wrong-world: "<gradient:#ff7817:#ffc46b>⚠</gradient> <dark_gray>▪</dark_gray> <white>ʙạɴ ᴄʜỉ ᴄó ᴛʜể ᴅùɴɢ ʟệɴʜ ɴàʏ ᴛạɪ: <worlds></white>"
+default-world-not-found: "<color:#ffdca1>🎫</color> <white>ʜʏᴘᴇʀᴄᴏʀᴇ</white> <dark_gray>▪</dark_gray> <white>ᴛʜế ɢɪớɪ ᴍặᴄ địɴʜ '<world>' ᴋʜôɴɢ ᴛồɴ ᴛạɪ! ᴋɪểᴍ ᴛʀᴀ ᴄấᴜ ʜìɴʜ.</white>"
+
+# ===================
+# TELEPORT SUCCESS
+# ===================
+teleport-success: "<color:#52ffc2>⏩</color> <white>ᴅịᴄʜ ᴄʜᴜʏểɴ</white> <dark_gray>▪</dark_gray> <white>đã ᴅịᴄʜ ᴄʜᴜʏểɴ ᴠề ᴠị ᴛʀí đã ʟưᴜ.</white>"
+teleport-default-spawn: "<color:#52ffc2>⏩</color> <white>ᴅịᴄʜ ᴄʜᴜʏểɴ</white> <dark_gray>▪</dark_gray> <white>đã ᴅịᴄʜ ᴄʜᴜʏểɴ ᴠề sᴘᴀᴡɴ ᴍặᴄ địɴʜ.</white>"
+
+# ===================
+# TELEPORT FAILURE
+# ===================
+teleport-failed: "<red>✖</red> <dark_gray>▪</dark_gray> <white>ᴅịᴄʜ ᴄʜᴜʏểɴ ᴛʜấᴛ ʙạɪ. ᴠᴜɪ ʟòɴɢ ᴛʜử ʟạɪ.</white>"
+
+# ===================
+# TELEPORT OTHERS
+# ===================
+teleport-others-success: "<color:#52ffc2>⏩</color> <white>ᴅịᴄʜ ᴄʜᴜʏểɴ</white> <dark_gray>▪</dark_gray> <white>đã ᴅịᴄʜ ᴄʜᴜʏểɴ <player> ᴠề ᴠị ᴛʀí đã ʟưᴜ.</white>"
+teleport-others-default-spawn: "<color:#52ffc2>⏩</color> <white>ᴅịᴄʜ ᴄʜᴜʏểɴ</white> <dark_gray>▪</dark_gray> <white>đã ᴅịᴄʜ ᴄʜᴜʏểɴ <player> ᴠề sᴘᴀᴡɴ ᴍặᴄ địɴʜ.</white>"
+teleport-others-failed: "<red>✖</red> <dark_gray>▪</dark_gray> <white>ᴅịᴄʜ ᴄʜᴜʏểɴ <player> ᴛʜấᴛ ʙạɪ.</white>"
+
+# ===================
+# SYSTEM
+# ===================
+save-failed: "<red>✖</red> <dark_gray>▪</dark_gray> <white>ᴋʜôɴɢ ᴛʜể ʟưᴜ ᴠị ᴛʀí ᴄʜᴏ <player>.</white>"
+missing-dependency: "<red>✖</red> <dark_gray>▪</dark_gray> <white>ᴘʟᴜɢɪɴ ʏêᴜ ᴄầᴜ <dependency> để ʜᴏạᴛ độɴɢ. ᴠᴜɪ ʟòɴɢ ᴄàɪ đặᴛ.</white>"

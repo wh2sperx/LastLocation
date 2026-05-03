@@ -1,0 +1,27 @@
+name: LastLocation
+version: '${version}'
+main: dev.arclyx0.LastLocation
+api-version: '1.21'
+depend: [Multiverse-Core]
+description: Auto-save logout position and teleport back with Multiverse safe teleport.
+
+commands:
+  lastlocation:
+    description: Teleport to your last saved location
+    usage: /<command> [player|reload]
+    permission: arclyx0.teleport.self
+    aliases: [ll]
+
+permissions:
+  arclyx0.teleport.self:
+    description: Allows teleporting yourself to your last location
+    default: true
+  arclyx0.teleport.others:
+    description: Allows teleporting another player to their last location
+    default: op
+  arclyx0.admin:
+    description: Admin permission (reload config, includes all other permissions)
+    default: op
+    children:
+      arclyx0.teleport.self: true
+      arclyx0.teleport.others: true
