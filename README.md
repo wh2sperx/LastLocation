@@ -20,7 +20,6 @@ LastLocation solves a common problem on multi-world servers: when a player logs 
 |-------------------------|----------|------------------------------------------|
 | Paper 1.21+             | Yes      | Server platform                          |
 | Multiverse-Core         | Yes      | World management and safe teleportation  |
-| Java 21+                | Yes      | Runtime                                  |
 
 ## Commands
 
@@ -28,11 +27,13 @@ The plugin provides a single command with multiple forms:
 
 ### `/lastlocation`
 
-| Usage                    | Alias | Description                                            |
-|--------------------------|-------|--------------------------------------------------------|
-| `/lastlocation`          | `/ll` | Teleport yourself to your saved location               |
-| `/lastlocation <player>` | `/ll` | Teleport another online player to their saved location |
-| `/lastlocation reload`   | `/ll` | Reload `config.yml` and `messages.yml`                 |
+| Usage                    | Description                                            |
+|--------------------------|--------------------------------------------------------|
+| `/lastlocation`          | Teleport yourself to your saved location               |
+| `/lastlocation <player>` | Teleport another online player to their saved location |
+| `/lastlocation reload`   | Reload `config.yml` and `messages.yml`                 |
+
+Alias: /ll
 
 ### Behavior Details
 
