@@ -41,3 +41,8 @@ teleport-others-failed: "<red>✖</red> <dark_gray>▪</dark_gray> <white>ᴅị
 # ===================
 save-failed: "<red>✖</red> <dark_gray>▪</dark_gray> <white>ᴋʜôɴɢ ᴛʜể ʟưᴜ ᴠị ᴛʀí ᴄʜᴏ <player>.</white>"
 missing-dependency: "<red>✖</red> <dark_gray>▪</dark_gray> <white>ᴘʟᴜɢɪɴ ʏêᴜ ᴄầᴜ <dependency> để ʜᴏạᴛ độɴɢ. ᴠᴜɪ ʟòɴɢ ᴄàɪ đặᴛ.</white>"
+
+# ===================
+# LOCATION EVENTS
+# ===================
+location-saved-temp: "<color:#ffdca1>📍</color> <dark_gray>▪</dark_gray> <white>đã ʟưᴜ ᴠị ᴛʀí ᴛạᴍ ᴛʜờɪ.</white>"

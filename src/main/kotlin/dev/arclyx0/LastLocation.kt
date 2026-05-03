@@ -26,7 +26,7 @@ class LastLocation : JavaPlugin() {
         messageManager = MessageManager(this)
         playerDataManager = PlayerDataManager(this); playerDataManager.initialize()
         multiverseCore = MultiverseCoreApi.get()
-        server.pluginManager.registerEvents(PlayerQuitListener(this), this)
+        server.pluginManager.registerEvents(PlayerEventListener(this), this)
         getCommand("lastlocation")?.setExecutor(LastLocationCommand(this))
     }
 

@@ -17,6 +17,16 @@ command-worlds:
   - lobby
   - example
 
+# Feature worlds (AFK, crate, shop, etc.)
+# Treated like command-worlds for /lastlocation usage.
+# When a player moves from a save-world to a feat-world,
+# their position in the save-world is saved temporarily.
+feat-worlds:
+  - afk
+  - crate
+  - shop
+  - pvp_arena
+
 # Default fallback world.
 # If a player has no saved location (new player) or the saved world
 # no longer exists, they will be teleported to this world's spawn point.

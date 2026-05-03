@@ -16,5 +16,6 @@ enum class Messages(val key: String) {
     TELEPORT_OTHERS_FAILED("teleport-others-failed"),
     DEFAULT_WORLD_NOT_FOUND("default-world-not-found"),
     SAVE_FAILED("save-failed"),
-    MISSING_DEPENDENCY("missing-dependency");
+    MISSING_DEPENDENCY("missing-dependency"),
+    LOCATION_SAVED_TEMP("location-saved-temp");
 }
