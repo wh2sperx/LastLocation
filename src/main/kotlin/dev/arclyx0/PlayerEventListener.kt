@@ -39,13 +39,10 @@ class PlayerEventListener(private val plugin: LastLocation) : Listener {
 
         try {
             if (worldName in saveWorlds) {
-                // Player quit while in a save-world → save as disconnect location
                 dm.saveDisconnectLocation(location, uuid)
                 val (_, wcFlag) = dm.getFlags(uuid)
                 dm.setFlags(uuid, disconnect = true, worldChange = wcFlag)
             } else {
-                // Player quit outside save-world (lobby, feat-world, etc.)
-                // If they have a pending world_change_location, promote it to disconnect
                 val (_, wcFlag) = dm.getFlags(uuid)
                 if (wcFlag) {
                     dm.transferWorldChangeToDisconnect(uuid)
@@ -83,20 +80,6 @@ class PlayerEventListener(private val plugin: LastLocation) : Listener {
             dm.setFlags(uuid, disconnect = false, worldChange = true)
             player.sendMessage(msg.getMessage(Messages.LOCATION_SAVED_TEMP))
         } catch (_: Exception) {
-        }
-    }
-
-    // ── PlayerDeathEvent ─────────────────────────────────────────────────
-
-    @EventHandler(priority = EventPriority.MONITOR)
-    fun onPlayerDeath(event: PlayerDeathEvent) {
-        val player = event.entity
-        val deathLoc = player.location
-        val worldName = deathLoc.world.name.lowercase()
-
-        // Only cache death location if dying in a save-world
-        if (worldName in getSaveWorlds()) {
-            plugin.playerDataManager.deathLocationCache[player.uniqueId] = deathLoc
         }
     }
 
