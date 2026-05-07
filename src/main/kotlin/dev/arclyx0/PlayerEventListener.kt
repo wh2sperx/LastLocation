@@ -94,7 +94,6 @@ class PlayerEventListener(private val plugin: LastLocation) : Listener {
         val deathLoc = dm.deathLocationCache.remove(uuid) ?: return
         val respawnWorldName = event.respawnLocation.world.name.lowercase()
 
-        // Only save if respawning in a non-save-world (command/feat-world)
         if (respawnWorldName !in getNonSaveWorlds()) return
 
         try {
