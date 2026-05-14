@@ -3,9 +3,7 @@ package dev.arclyx0
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
-import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.event.player.PlayerQuitEvent
-import org.bukkit.event.player.PlayerRespawnEvent
 import org.bukkit.event.player.PlayerTeleportEvent
 
 class PlayerEventListener(private val plugin: LastLocation) : Listener {
@@ -83,24 +81,4 @@ class PlayerEventListener(private val plugin: LastLocation) : Listener {
         }
     }
 
-    // ── PlayerRespawnEvent ───────────────────────────────────────────────
-
-    @EventHandler(priority = EventPriority.MONITOR)
-    fun onPlayerRespawn(event: PlayerRespawnEvent) {
-        val player = event.player
-        val uuid = player.uniqueId
-        val dm = plugin.playerDataManager
-
-        val deathLoc = dm.deathLocationCache.remove(uuid) ?: return
-        val respawnWorldName = event.respawnLocation.world.name.lowercase()
-
-        if (respawnWorldName !in getNonSaveWorlds()) return
-
-        try {
-            dm.saveWorldChangeLocation(deathLoc, uuid)
-            dm.setFlags(uuid, disconnect = false, worldChange = true)
-            player.sendMessage(msg.getMessage(Messages.LOCATION_SAVED_TEMP))
-        } catch (_: Exception) {
-        }
-    }
 }

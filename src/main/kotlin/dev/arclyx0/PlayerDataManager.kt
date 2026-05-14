@@ -7,6 +7,7 @@ import java.sql.Connection
 import java.sql.DriverManager
 import java.util.*
 import java.util.concurrent.ConcurrentHashMap
+import java.util.logging.Level
 
 class PlayerDataManager(
     private val plugin: LastLocation
@@ -19,10 +20,7 @@ class PlayerDataManager(
      */
     private val playerFlags = ConcurrentHashMap<UUID, Pair<Boolean, Boolean>>()
 
-    /**
-     * Cache for death locations — used to bridge PlayerDeathEvent → PlayerRespawnEvent.
-     */
-    val deathLocationCache = ConcurrentHashMap<UUID, Location>()
+
 
     fun initialize() {
         val dbFile = File(plugin.dataFolder, "playerdata").absolutePath
@@ -197,7 +195,28 @@ class PlayerDataManager(
         return Location(world, saved.x, saved.y, saved.z, saved.yaw, saved.pitch)
     }
 
+    /**
+     * Flush all world_change locations to disconnect_locations in the database.
+     * Called on plugin disable to persist any pending world_change records.
+     */
+    fun flushWorldChangeToDisconnect() {
+        val uuidsWithWorldChange = playerFlags.entries
+            .filter { it.value.second } // world_change flag == true
+            .map { it.key }
+
+        for (uuid in uuidsWithWorldChange) {
+            try {
+                transferWorldChangeToDisconnect(uuid)
+                setFlags(uuid, disconnect = true, worldChange = false)
+            } catch (e: Exception) {
+                plugin.logger.log(Level.WARNING, "Failed to flush world_change for $uuid", e)
+            }
+        }
+    }
+
     fun close() {
+        flushWorldChangeToDisconnect()
+
         if (::connection.isInitialized && !connection.isClosed) {
             connection.close()
         }

@@ -27,7 +27,7 @@ The plugin uses **two independent storage slots** to track why a player left the
 | Slot | Trigger | Example |
 |---|---|---|
 | 🔴 **Disconnect** | Player quits the server while in a save-world | Alt+F4, `/quit`, kicked |
-| 🔵 **World Change** | Player leaves a save-world to a lobby/feature world | Portal to lobby, death respawn, teleport command |
+| 🔵 **World Change** | Player teleports from a save-world to a lobby/feature world | Portal to lobby, teleport command |
 
 This dual-slot system ensures players can always return to their gameplay world — even after going to the lobby and back multiple times.
 
@@ -37,7 +37,7 @@ This dual-slot system ensures players can always return to their gameplay world 
 ┌─────────────┐    quit/kick     ┌──────────────────┐
 │             │ ───────────────► │ Disconnect Slot 🔴│
 │  Gameplay   │                  └──────────────────┘
-│   World     │    tp/death      ┌──────────────────┐
+│   World     │    teleport      ┌──────────────────┐
 │ (save-world)│ ───────────────► │ World Change Slot🔵│
 │             │                  └──────────────────┘
 └─────────────┘
@@ -50,7 +50,10 @@ This dual-slot system ensures players can always return to their gameplay world 
                └──────────────────────────────────────┘
 ```
 
-**Key rule:** After teleporting from a disconnect record, **all records are cleared** so the next time the player leaves the gameplay world, a fresh world-change record is created.
+**Key rules:**
+- After teleporting from a disconnect record, **all records are cleared** so the next time the player leaves the gameplay world, a fresh world-change record is created.
+- Death and respawn are **not** treated as world-change triggers — only explicit cross-world teleports count.
+- On **plugin disable** (server shutdown/reload), all pending world-change records are automatically flushed to the disconnect slot in the database to prevent data loss.
 
 ### World Types
 
@@ -182,9 +185,11 @@ The database contains two tables:
 | Table | Purpose |
 |---|---|
 | `disconnect_locations` | Positions saved when a player quits the server in a save-world |
-| `world_change_locations` | Positions saved when a player leaves a save-world to a lobby/feature world |
+| `world_change_locations` | Positions saved when a player teleports from a save-world to a lobby/feature world |
 
 Runtime flags (`disconnect_flag`, `world_change_flag`) are held in memory only and reset on server restart. After a restart, players without flags will be sent to default spawn.
+
+> **Flush on disable:** When the plugin is disabled (server stop or `/reload`), all pending world-change records are automatically transferred to `disconnect_locations` and persisted to the database. This ensures no location data is lost across restarts.
 
 ---
 
