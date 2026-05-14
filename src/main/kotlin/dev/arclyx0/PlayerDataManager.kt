@@ -20,11 +20,18 @@ class PlayerDataManager(
      */
     private val playerFlags = ConcurrentHashMap<UUID, Pair<Boolean, Boolean>>()
 
-
+    init {
+        try {
+            Class.forName("org.h2.Driver")
+        } catch (e: ClassNotFoundException) {
+            plugin.logger.severe("H2 Driver not found! Add H2 dependency to your plugin.")
+            throw e
+        }
+    }
 
     fun initialize() {
         val dbFile = File(plugin.dataFolder, "playerdata").absolutePath
-        connection = DriverManager.getConnection("jdbc:h2:$dbFile;MODE=MySQL")
+        connection = DriverManager.getConnection("jdbc:h2:file:$dbFile;MODE=MySQL")
         connection.createStatement().use { stmt ->
             stmt.executeUpdate(
                 """
